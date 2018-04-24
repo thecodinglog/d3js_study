@@ -5,5 +5,9 @@
     </script>
 </head>
 <body>
+<script>
+    d3.csv("resource/cities.csv", (error,data) => {console.log(error,data)});
+    d3.csv("resource/tweets.json", (error,data) => {console.log(error,data)});
+</script>
 </body>
 </html>
