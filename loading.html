@@ -8,17 +8,14 @@
 <script>
     d3.csv("resource/cities.csv", (error,data) => {console.log(error,data)});
     d3.json("resource/tweets.json", (error,data) => {console.log(error,data)});
-    function f(d) {
-        setTimeout(()=>{alert("f")}, 1000)
 
-
-    }
-    function f1() {
-        setTimeout(()=>{alert("f1")}, 100 )
-    }
-    f(2);
-    f1();
-
+    d3.json("resource/tweets.json", data => {
+        var tweetData = data.tweets;
+        var nestedTweets = d3.nest()
+            .key(d => d.user)
+            .entries(tweetData);
+        console.log(nestedTweets);
+    });
 </script>
 </body>
 </html>

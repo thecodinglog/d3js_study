@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://d3js.org/d3.v3.min.js">
+    </script>
+</head>
+<body>
+<script>
+    var testArray =  [88,10000,1,75,12,35];
+    console.log(d3.min(testArray, el => el)); //1
+    console.log(d3.max(testArray, el => el)); //10000
+    console.log(d3.mean(testArray, el => el)); //1701.8333333333333
+
+    d3.csv("resource/cities.csv", data => {
+        console.log(d3.min(data, el => +el.population)); //500000
+        console.log(d3.max(data, el => +el.population)); //13000000
+        console.log(d3.mean(data, el => +el.population)); //6856250
+    });
+</script>
+</body>
+</html>
