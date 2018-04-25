@@ -14,7 +14,9 @@
         .append("rect")
         .attr("width", 10)
         .attr("height", d => d)
-        .style("opacity", .25);
+        .style("opacity", .25)
+        .attr("x", (d,i) => i * 10);
+
 </script>
 </body>
 </html>
