@@ -37,9 +37,9 @@
                 el.numTweets = el.values.length
                 el.numFavorites = d3.sum(el.values, function (d) {return d.favorites.length});
                 el.numRetweets = d3.sum(el.values, function (d) {return d.retweets.length});
-            })
+            });
 
-            pieChart = d3.layout.pie().sort(null);
+            pieChart = d3.layout.pie();//.sort(null);
             pieChart.value(function(d) {return d.numTweets});
             newArc = d3.svg.arc();
             newArc.outerRadius(100).innerRadius(30);
@@ -66,6 +66,21 @@
                 };
             }
 
+            pieChart.value(function (d) {
+                return d.numFavorites
+            });
+
+            d3.selectAll("path").data(pieChart(nestedTweets))
+                .transition().duration(1000).attr("d", newArc);
+
+            pieChart.value(function(d){
+                return d.numRetweets
+            });
+
+            pieChart.sort(null);
+
+            d3.selectAll("path").data(pieChart(nestedTweets))
+                .transition().duration(1000).attr("d", newArc);
         }
 
     </script>
